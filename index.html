@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☠️ Check Khodam cuyyy ☠️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <div class="gradient"></div>
+    <style>
+       @keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gradient {
+  --size: 750px;
+  --speed: 50s;
+  --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+
+  width: var(--size);
+  height: var(--size);
+  filter: blur(calc(var(--size) / 5));
+  background-image: linear-gradient(hsl(222, 84, 60, 100%), hsl(164, 79, 71));
+  animation: rotate var(--speed) var(--easing) alternate infinite;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+@media (min-width: 720px) {
+  .gradient {
+    --size: 500px;
+  }
+}
+
+body {
+  background-color: #071c39;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* This is just to transition when you change the viewport size. */
+* {
+  transition: all 0.5s ease-out;
+}
+
+
+        .card {
+            background-color: rgba(147, 148, 171, 0.25);
+            padding: 20px;
+            border: 1px solid #FFA500; /* Border jingga ke kuningan */
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow lebih gelap */
+            backdrop-filter: blur(10px); /* Blur lebih kuat */
+            position: relative; /* Untuk positioning spinner */
+        }
+
+        h1, p {
+            color: #FFA500; /* Warna font jingga ke kuningan */
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #FFA500; /* Border input */
+            border-radius: 200px;
+            text-align: center;
+            width: 80%;
+            margin-bottom: 20px;
+            background-color: transparent;
+            color: #f1f1f1;
+        }
+
+        button {
+            background-color: #439c8f;
+            color: #ffffff;
+            padding: 10px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 200px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            background-color: #4e4aa7;
+            transform: translateY(-3px); /* Efek naik saat hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow lebih dalam saat hover */
+        }
+
+        .footer {
+            color: #97D3FF;
+            font-weight: bold;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #result {
+            display: none;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #FFA500; /* Warna jingga ke kuningan */
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -20px; /* Setengah dari tinggi */
+            margin-left: -20px; /* Setengah dari lebar */
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Cek Khodam</h1>
+        <p>Masukkan nama untuk mengetahui khodam</p>
+        <input type="text" id="nameInput" placeholder="Ketik nama kamu di sini">
+        <button onclick="cekKhodam()">Cek Khodam</button>
+        <div id="loading" class="loading-spinner" style="display: none;"></div>
+        <button onclick="resetForm()" style="margin-top: 20px;">Cek Lagi</button>
+        <div id="result">
+            <h2 id="khodamName"></h2>
+            <p id="khodamMeaning"></p>
+        </div>
+    </div>
+    <div class="footer">
+        © 2024 <a target="_blank">Zamzam gans</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function cekKhodam() {
+            const nameInput = document.getElementById('nameInput').value;
+            if (!nameInput) {
+                Swal.fire({
+                    title: 'GAK BOLEH KOSONG!😡',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            document.getElementById('loading').style.display = 'block'; // Tampilkan spinner
+            setTimeout(() => {
+                const khodams = [
+            
+            
+                { name: "Sandal Jepit", meaning: "Selalu santai dan nyaman" },
+                { name: "Honda Win", meaning: "Selalu menang di segala medan" },
+                { name: "Lemari Plastik", meaning: "Selalu ringan dan praktis" },
+                { name: "Kulkas Mini", meaning: "Selalu dingin dan efisien" },
+                { name: "Honda CRF", meaning: "Selalu tangguh di segala medan" },
+                { name: "Cangkir Teh", meaning: "Selalu menghangatkan suasana" },
+                { name: "Kompor Gas", meaning: "Selalu cepat dan panas" },
+                { name: "Honda Monkey", meaning: "Selalu lucu dan unik" },
+                { name: "Cerek Air", meaning: "Selalu siap menyajikan kehangatan" },
+                { name: "Selimut Tebal", meaning: "Selalu hangat dan nyaman" },
+                { name: "Honda Beat Street", meaning: "Selalu lincah dan tangguh" },
+                { name: "Meja Rias", meaning: "Selalu menampilkan yang terbaik" },
+                { name: "Gelas Plastik", meaning: "Selalu ringan dan praktis" },
+                { name: "Honda X-ADV", meaning: "Selalu siap untuk petualangan" },
+                { name: "Rak Buku", meaning: "Selalu penuh pengetahuan" },
+                { name: "Sisir Patah", meaning: "Selalu berfungsi meski tak sempurna" },
+                { name: "Honda Rebel", meaning: "Selalu berjiwa pemberontak" },
+                { name: "Bantal Guling", meaning: "Selalu nyaman di pelukan" },
+                { name: "Honda CRF250", meaning: "Selalu siap menghadapi tantangan" },
+                { name: "Lemari Es", meaning: "Selalu menyimpan kesegaran" },
+                { name: "Honda Forza", meaning: "Selalu kuat dan bertenaga" },
+                { name: "Piring Retak", meaning: "Selalu menantang dengan keunikannya" },
+                { name: "Harimau Loreng", meaning: "Kamu tangguh dan memiliki kekuatan untuk melindungi dan menyerang." },
+                { name: "Gajah Putih", meaning: "Kamu bijaksana dan memiliki kekuatan besar, lambang dari keberanian dan keteguhan hati." },
+                { name: "Banteng Sakti", meaning: "Kamu kuat dan penuh semangat, tidak takut menghadapi rintangan." },
+                { name: "Ular Raksasa", meaning: "Kamu memiliki kebijaksanaan dan kekuatan tersembunyi, siap menyerang jika diperlukan." },
+                { name: "Ikan Dewa", meaning: "Kamu tenang dan penuh kedamaian, membawa rezeki dan keberuntungan." },
+                { name: "Kucing Hitam", meaning: "Kamu misterius dan penuh dengan rahasia, membawa keberuntungan bagi yang memahami." },
+                { name: "Rusa Emas", meaning: "Kamu anggun dan berharga, selalu dihargai oleh orang-orang di sekitarmu." },
+                { name: "Singa Bermahkota", meaning: "Kamu lahir sebagai pemimpin, memiliki kekuatan dan kebijaksanaan seorang raja." },
+                { name: "Kijang Perak", meaning: "Kamu cepat dan cekatan, selalu waspada dan siap untuk melompat lebih jauh." },
+                { name: "Kipas Angin Kelereng", meaning: "Selalu memberikan angin segar dengan kocaknya" },
+                { name: "Penghapus Ajaib", meaning: "Mampu menghapus kesalahan dengan cara yang lucu" },
+                { name: "Kertas Guling Goyang", meaning: "Tak pernah diam dan selalu menghibur" },
+                { name: "Pulpen Melambai", meaning: "Selalu memberi tanda dengan cara yang unik" },
+                { name: "Tali Tambang Tertawa", meaning: "Membuat pekerjaan menjadi lebih menyenangkan" },
+                { name: "Botol Minyak Mengejek", meaning: "Seringkali memberi komentar lucu" },
+                { name: "Topi Terbang", meaning: "Membuat kepala menjadi lebih ringan dengan keunikannya" },
+                { name: "Payung Terbalik", meaning: "Selalu membalikkan situasi dengan cara yang tak terduga" },
+                { name: "Piring Berjalan", meaning: "Tak pernah tinggal diam di tempatnya" },
+                { name: "Ember Tertawa", meaning: "Menghadirkan keceriaan di setiap kegiatan" },
+                { name: "Lampu Tidur Tertidur", meaning: "Terlihat malas-malasan tapi selalu memberikan cahaya yang hangat" },
+                { name: "Gelas Bergoyang", meaning: "Selalu memberikan sensasi yang berbeda dalam menikmati minuman" },
+                { name: "Kunci Kamar Mandi Keriting", meaning: "Selalu membuat masalah kecil menjadi lucu" },
+                { name: "Pisau Potong Hati", meaning: "Mampu memotong rasa sakit dengan kelebihannya" },
+                { name: "Tisu Terbang", meaning: "Selalu siap membantu dengan cepat dan lincah" },
+                { name: "Kardus Kocak", meaning: "Tak pernah membosankan, selalu menyimpan kejutan di dalamnya" },
+                { name: "Kain Lap Terbang", meaning: "Berguna untuk membersihkan dengan cara yang seru" },
+                { name: "Sendok Garpu Goyang", meaning: "Menjadi pasangan yang serasi dalam setiap makanan" },
+                { name: "Tempat Pensil Teriak", meaning: "Tak pernah diam dan selalu meminta perhatian" },
+                { name: "Buku Lucu", meaning: "Mampu membuatmu tertawa di setiap halaman" },
+                { name: "Cermin Menggigil", meaning: "Selalu memberikan pantulan yang lucu" },
+                { name: "Kamera Gelantungan", meaning: "Selalu mengabadikan momen-momen lucu" },
+                { name: "Cangkir Cemberut", meaning: "Meski terlihat cemberut, tapi selalu menyajikan minuman dengan baik" },
+                { name: "Kursi Muter", meaning: "Memberikan sensasi berputar di setiap duduknya" },
+                { name: "Lemari Tertidur", meaning: "Selalu memberikan kenyamanan yang tak terduga" },
+                { name: "Tas Terbang", meaning: "Selalu membawa barang-barang dengan gaya yang unik" },
+                { name: "Sepatu Terbang", meaning: "Membuat langkahmu lebih ringan dengan kelebihannya" },
+                { name: "Kunci Jalan Bergosip", meaning: "Tak pernah diam tentang hal-hal di sekitarnya" },
+                { name: "Sisir Sibuk", meaning: "Selalu memberikan gaya yang berbeda pada setiap rambut" },
+                { name: "Gelas Tertawa", meaning: "Bergoyang-goyang saat diisi dengan minuman" },
+                { name: "Pisau Potong Goyang", meaning: "Selalu memberikan irama yang unik saat digunakan" },
+                { name: "Meja Ngobrol", meaning: "Tak pernah sepi dari percakapan" },
+                { name: "Piring Berguling", meaning: "Suka berputar-putar saat disentuh" },
+                { name: "Kompor Berpikir", meaning: "Selalu memberikan solusi yang cerdas untuk setiap masalah" },
+                { name: "Kulkas Goyang", meaning: "Bergetar saat diisi dengan makanan" },
+                { name: "Cangkir Berlari", meaning: "Tak pernah bisa diam di tempatnya" },
+                { name: "Lampu Malam Malas", meaning: "Terlihat malas tapi selalu memberikan cahaya yang lembut" },
+                { name: "Botol Kecap Keriting", meaning: "Selalu memberikan sentuhan yang berbeda pada masakan" },
+                { name: "Sendok Garpu Bergoyang", meaning: "Selalu menari-nari saat digunakan" },
+                { name: "Topi Tertawa", meaning: "Terlihat ceria di atas kepala siapa pun" },
+                { name: "Korek Api Malas", meaning: "Terlihat malas tapi selalu memberikan api yang menyala" },
+                { name: "Panci Pintar", meaning: "Selalu memberikan masakan yang sempurna" },
+                { name: "Kertas Berlari", meaning: "Tak pernah bisa diam di meja" },
+                { name: "Pensil Penghilang", meaning: "Selalu menghilang saat dibutuhkan" },
+                { name: "Penghapus Pelawak", meaning: "Selalu membuat kesalahan menjadi lucu" },
+                { name: "Buku Bergoyang", meaning: "Selalu memberikan sensasi yang berbeda saat dibaca" },
+                { name: "Ponsel Pintar", meaning: "Selalu memberikan jawaban yang tepat untuk setiap pertanyaan" },
+                { name: "Gunting Goyang", meaning: "Selalu menari-nari saat digunakan" },
+                { name: "Rak Buku Pintar", meaning: "Selalu memberikan buku yang sesuai dengan minatmu" },
+                { name: "Kipas Angin Tertawa", meaning: "Terlihat bahagia saat berputar-putar" },
+                { name: "Sabun Mandi Malas", meaning: "Terlihat malas tapi selalu memberikan kebersihan yang menyegarkan" },
+                { name: "Pulpen Pintar", meaning: "Selalu memberikan ide yang brilian" },
+                { name: "Gelas Pintar", meaning: "Selalu memberikan minuman yang sesuai dengan keinginanmu" },
+                { name: "Botol Air Mengejek", meaning: "Selalu memberikan komentar yang lucu saat diminum" },
+                { name: "Bantal Bergoyang", meaning: "Tak pernah bisa diam saat di atas kasur" },
+                { name: "Kursi Bergoyang", meaning: "Selalu memberikan sensasi yang menyenangkan saat digunakan" },
+                { name: "Rak Buku Bergoyang", meaning: "Selalu memberikan sensasi yang unik saat buku diletakkan di atasnya" },
+                { name: "Tas Pintar", meaning: "Selalu memberikan barang yang diperlukan saat dibutuhkan" },
+                { name: "Piring Berlari", meaning: "Tak pernah bisa diam di tempatnya" },
+                { name: "Panci Penyihir", meaning: "Mampu membuat masakan yang ajaib" },
+                { name: "Sendok Garpu Terbalik", meaning: "Tak pernah bisa diletakkan dengan benar" },
+                { name: "Kotak Pensil Berguling", meaning: "Selalu menggelinding saat diletakkan di meja" },
+                { name: "Kunci Kamar Mandi Tertawa", meaning: "Tak pernah bisa diam dan selalu tertawa-tawa" },
+                { name: "Kardus Malas", meaning: "Selalu terlihat malas tapi selalu memberikan perlindungan yang baik" },
+                { name: "Lampu Tertidur", meaning: "Terlihat ngantuk tapi selalu memberikan cahaya yang hangat" },
+                { name: "Anjing Pelacak", meaning: "Kamu setia dan penuh dedikasi, selalu menemukan jalan menuju tujuanmu." },
+                { name: "Pemalas", meaning: "Males banget kalo bangun pagi" },
+                { name: "Rajin", meaning: "Suka bantu orang tua " },
+                { name: "Anak Baik", meaning: "Sering bantu satu sama lain" },
+                { name: "Pelit", meaning: "Pelit banget bangsat najisssssssss" },
+                { name: "Tukang Ngutang", meaning: "PAS MINTA KAYA KUCING, DITAGIH GALAKAN DIA" },
+                { name: "Pekerja Keras", meaning: "Rajin kerja banget dan disiplin" },
+                { name: "Opor Ayam", meaning: "Adanya Waktu lebaran doang" },
+                { name: "Tehyung", meaning: "Ganteng banget" },
+                { name: "Pesulap", meaning: "Dedi Corbuzier" },
+                { name: "Gamers", meaning: "Suka main game sampe begadang" },
+                { name: "Penonton Drakor", meaning: "Marathon Drakor ampe meninggal" },
+                { name: "Bau Badan", meaning: "Badannya bau banget anjing" },
+                { name: "Jorok", meaning: "Asli gapernah mandi, seminggu cumin sekali" },
+                { name: "Perokok", meaning: "Sehari bisa 5 bungkus" },
+                { name: "Futsal", meaning: "Jago banget maennya, tpi pas pulang pegel-pegel" },
+                { name: "Rakus", meaning: "Sehari bisa 5kali makan" },
+                { name: "Sombong", meaning: "Orang paling sombong dan tengil kalo udah jadi atasan" },
+                { name: "Rendah Hati", meaning: "Suka Menolong nenek nenek" },
+                { name: "Anak Ritel", meaning: "Pinter display dan menjaga kebersihan" },
+                { name: "Anak F&B", meaning: "Jago bikin makanan dan minuman serta ke higienisan makanan" },
+                { name: "Pemales", meaning: "Kerjanya rebahan doang" },
+                { name: "Anak Motivasi", meaning: "Kerjanya liat motivasi tapi gada aksinya CHUAKSSSS" },
+                { name: "Pick ME", meaning: "Ngerasa diri lu paling pinter,paling wah,paling cetarrr, paling tau segalanya, pdhl kosong isinya WKWKWKWK" },
+                { name: "Anak FF", meaning: "Mabar bos ku mantap" },
+                { name: "Anak ML", meaning: "Jawa ngent*t gabisa maen anj*ng" },
+                { name: "Muka dua", meaning: "di depan ketawa ketiwi, dibelakang nusuk bgt mulutnya" },
+                { name: "Janda", meaning: "Selalu cantik dan bahenol setiap hari" },
+                { name: "Berondong Tua", meaning: "Duitnya banyakk tapi tititnya kecil" },
+                { name: "Gen Z", meaning: "Kadang ngeluh, Kadang rajin" },
+                { name: "Gen Milenial", meaning: "Ngerasa paling keren dari gen lain" },
+                { name: "Penjudi", meaning: "Suka banget ngeslot, pdhl udh di atur lose/win" },
+                { name: "Keras kelapa", meaning: "kepalanya keras banget batu" },
+                { name: "Pinter Masak", meaning: "Bisa bikin semua jenis makanan" },
+                { name: "The Nurul's", meaning: "Setiap hari makan seblak atau mie gacoan" },
+                { name: "Seleb", meaning: "Banyak Followers" },
+                { name: "Pinter Menabung", meaning: "Investasi terus" },
+                { name: "Orang MIskin", meaning: "GADA DUIT TAPI LIFESTYLE KAYA ORKAY WKWKWKWK" },
+                { name: "Suka Makan", meaning: "Semuanya doyan gada yg ga doyan" },
+                { name: "Pembokep Handal", meaning: "Semua jenis bokep ada di galerynya" },
+                { name: "Tukang Galon", meaning: "Nyirem terus boskuuu mantap" },
+                { name: "Petugas PPSU", meaning: "Rajin bangun pagi dan suka bersih bersih" },
+                { name: "ODGJ", meaning: "Suka ngomong sendiri kalo di motor" },
+                { name: "Wibu", meaning: "Suka nonton anime dan cosplay jepang" },
+                { name: "Kecap Less Sugar", meaning: "Bango benar benar kecap" },
+                { name: "Supir Truk", meaning: "Selalu sabar walau setiap hari kena macet" },
+                { name: "Topeng Monyet", meaning: "Selalu menghibur walau di larang pemerintah" },
+
+                ];
+                const khodam = khodams[Math.floor(Math.random() * khodams.length)];
+                document.getElementById('khodamName').innerText = `Khodam: ${khodam.name}`;
+                document.getElementById('khodamMeaning').innerText = khodam.meaning;
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('loading').style.display = 'none'; // Sembunyikan spinner
+            }, 2000); // Delay untuk simulasi loading
+        }
+
+        function resetForm() {
+            document.getElementById('nameInput').value = '';
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
